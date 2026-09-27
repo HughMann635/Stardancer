@@ -350,6 +350,14 @@ public:
                 buttonblock[0].setFillColor(sf::Color(200, 0, 0));
                 buttonblock[1].setFillColor(sf::Color(95, 0, 0));
             }
+        } else {
+            if (unlocked[2] == 0) {
+                buttonblock[0].setFillColor(sf::Color(0, 0, 0));
+                buttonblock[1].setFillColor(sf::Color(0, 0, 0));
+            } else {
+                buttonblock[0].setFillColor(sf::Color(200, 0, 0));
+                buttonblock[1].setFillColor(sf::Color(95, 0, 0));
+            }
         }
         window.draw(buttonblock[1]);
         window.draw(buttonblock[0]);
