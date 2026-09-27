@@ -1132,7 +1132,7 @@ public:
                         tiledesc.setOutlineColor(sf::Color(240, 170, 0));
                         tilename.setOutlineThickness(-1);
                         tiledesc.setOutlineThickness(-1);
-                        if (unlocked[2] == 0) {
+                        if (unlocked[26] == 0) {
                             tilename = maketext(35, sf::Color(255, 40, 60), "???", font, sf::Vector2f(640, 370));
                             tiledesc = maketext(25, sf::Color(255, 40, 60), "Complete more levels to discover this obstacle!", font, sf::Vector2f(640, 450));
                         }
