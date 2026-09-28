@@ -603,7 +603,7 @@ inline std::string levels[5][6] = {
         "****************************************************************\n"
         "*S***********************333333333333333*********************O**\n"
         "######WWWWWWWWWWWWWWWWWWW###############WWWWWWWWWWWWWWWWWW###D##\n"
-        "#****#WWWWWWWWWWWWWPWWWWW#WWWWWWWW#WWWWWWWWWWWWWWWWWWWWWWW#ZZZZZ\n"
+        "#5555#WWWWWWWWWWWWWPWWWWW#WWWWWWWW#WWWWWWWWWWWWWWWWWWWWWWW#ZZZZZ\n"
         "#**F*#WWWWWWWW############WWWWWWWW#WWWWWWWWWWWWWWWWWWWWWWW#ZZZZZ\n"
         "#****#3333WW33#WWWWWWWWWWWWWWWWWWW#WWWWWWWWWWWWWWWWWWWWWWW#3ZZZZ\n"
         "#****#WWWWWWWW#WWWWWWWWWWWWWWWWWWW#WWWWWWWWWWWWWWWWWWWWWWW#Z3ZZZ\n"
