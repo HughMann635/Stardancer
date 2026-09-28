@@ -758,9 +758,9 @@ public:
         creditsbox = makebtn(sf::Vector2f(800, 280), sf::Color(245, 215, 150, 230), sf::Vector2f(width/2, height/2+50));
         creditsboxshadow = rectshadow(235, 10, creditsbox);
         
-        creditscontent = maketext(30, sf::Color(20, 20, 20),
-        "This game was designed and coded by Zahran G.\n\n"
-        "AI Use: Minimal AI was used solely for debugging core physics\nand collision algorithms. Art, sound effects, game design, etc.\nare fully human.\n\n"
+        creditscontent = maketext(25, sf::Color(20, 20, 20),
+        "This game was designed and coded by Zahran G. The only external assets\nused is the font, called Aldo the Apache (designed by AJ Paglia).\n\n"
+        "AI Use: Minimal AI was used solely for debugging core physics and\ncollision algorithms. Art, sound effects, game design, etc. are fully human.\n\n"
         "Click the CREDITS title for a surprise! :)"
         , font, sf::Vector2f(0, 0));
         creditscontent.setOrigin(sf::Vector2f(creditscontent.getLocalBounds().position.x, creditscontent.getLocalBounds().position.y));
