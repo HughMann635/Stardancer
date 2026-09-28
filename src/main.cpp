@@ -50,7 +50,6 @@ int main()
 
 	//BUGS!!!!!
 	//rotation bugs - ONLY SETTLING IS ACTUALLY AN ISSUE RN
-	//levels 13, 17, 26, 4, 8, look into these, as well as other levels but these ones I can remember
 	
 
 	//TO ADD!!!!!
