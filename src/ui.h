@@ -219,6 +219,7 @@ public:
             backbtnshadow.setPosition(sf::Vector2f(103, 106));
             if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) { 
                 clicksound.play();
+                switched = true;
                 return true; 
             }
         } else {

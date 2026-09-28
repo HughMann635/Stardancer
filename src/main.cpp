@@ -56,7 +56,6 @@ int main()
 	//TO ADD!!!!!
 	//more sfx (death especially)
 	//AN ACTUAL SCREEN FOR BEATING LEVEL 30!!!!!
-	//UPDATE CREDITS MENU!!!
 
 
 	while (window.isOpen()) {
@@ -139,8 +138,7 @@ int main()
 					state = State::mainmenu;
 					levelnum = 0;
 					if (setnum == 4) {
-						std::cout << "Congrats!";
-						window.close();
+						state = State::mainmenu;
 					}
 					else setnum += 1;
 				}
@@ -319,19 +317,19 @@ int main()
 			window.setView(view);
 			if (!esckeyheld) pausemenu.checkaction(window, clicksound);
 		} else if (state == State::levelselect) {
-			if (menu.navback(window, clicksound)) state = State::mainmenu;
+			if (menu.navback(window, clicksound)) targetstate = State::mainmenu;
 			map.drawmap(window);
 			window.setView(window.getDefaultView());
 			lvlselect.select(window, clicksound);
 			lvlselect.draw(window);
 		} else if (state == State::credits) {
-			if (menu.navback(window, clicksound)) state = State::mainmenu;
+			if (menu.navback(window, clicksound)) targetstate = State::mainmenu;
 			map.drawmap(window);
 			window.setView(window.getDefaultView());
 			credits.draw(window);
 			credits.update(window);
 		} else if (state == State::handbook) {
-			if (menu.navback(window, clicksound)) state = State::mainmenu;
+			if (menu.navback(window, clicksound)) targetstate = State::mainmenu;
 			if (!handbookenter) {
 				handbook.tilename = maketext(35, sf::Color(255, 40, 60), "SELECT A TILE", handbook.font, sf::Vector2f(640, 370));
             	handbook.tiledesc = maketext(25, sf::Color(255, 40, 60), "AND ITS DESCRIPTION WILL APPEAR HERE", handbook.font, sf::Vector2f(640, 450));
@@ -344,7 +342,7 @@ int main()
 			handbook.update(window, deltatime, clicksound);
 			handbook.draw(window);
 		} else if (state == State::settings) {
-			if (menu.navback(window, clicksound)) state = State::mainmenu;
+			if (menu.navback(window, clicksound)) targetstate = State::mainmenu;
 			map.drawmap(window);
 			window.setView(window.getDefaultView());
 			settings.draw(window);
