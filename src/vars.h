@@ -26,6 +26,7 @@ inline bool menuenter = false;
 inline bool handbookenter = false;
 inline bool autohover = false;
 inline bool restarted = false;
+inline bool cheatswitch = false;
 inline int pbs[30] = {0};
 inline sf::Clock leveltimer;
 inline bool newnotif = false;

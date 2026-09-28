@@ -49,14 +49,14 @@ int main()
 
 
 	//BUGS!!!!!
-	//rotation bugs
+	//rotation bugs - ONLY SETTLING IS ACTUALLY AN ISSUE RN
 	//levels 13, 17, 26, 4, 8, look into
 	//as well as other levels but these ones I can remember
-	//ISSUES WITH WALKING THRU ONE TILE GAPS
 	
 
 	//TO ADD!!!!!
 	//more sfx (death especially)
+	//AN ACTUAL SCREEN FOR BEATING LEVEL 30!!!!!
 	
 
 	//RETURNING TO OLD LEVELS - mainly done
@@ -93,6 +93,7 @@ int main()
 				currentplayer -> freefallingtip = false;
 				tipping_right = false;
 				tipping_left = false;
+				cheatswitch = false;
 				
 				env.clear(sf::Color::Transparent);
 				map.drawenv(env);
@@ -126,17 +127,19 @@ int main()
 					tipping_right = false;
 					tipping_left = false;
 					gravity = 1800.f;
+					cheatswitch = false;
 					restart = false;
 					restarted = false;
 				}
 			} 
 			if (newlevel) {
-				if (pbs[setnum*6+levelnum] > leveltimer.getElapsedTime().asMilliseconds() || pbs[setnum*6+levelnum] == 0) pbs[setnum*6+levelnum] = leveltimer.getElapsedTime().asMilliseconds();
+				if ((pbs[setnum*6+levelnum] > leveltimer.getElapsedTime().asMilliseconds() || pbs[setnum*6+levelnum] == 0) && !cheatswitch) pbs[setnum*6+levelnum] = leveltimer.getElapsedTime().asMilliseconds();
 				completed[setnum*6+levelnum] = 1;
 				unlocked[setnum*6+levelnum+1] = 1;
 				if (((setnum*6+levelnum+1) % 6 == 0 || setnum*6+levelnum+1 == 1 || setnum*6+levelnum+1 == 2 || setnum*6+levelnum+1 == 3 || setnum*6+levelnum+1 == 26)) newnotif = true;
 				else if (newnotif) newnotif = true;
 				else newnotif = false;
+				cheatswitch = false;
 				levelnum += 1;
 				if (levelnum > 5) {
 					state = State::mainmenu;
@@ -220,21 +223,25 @@ int main()
 			else if (keypressed(Action::switch2) && !dynamic_cast<circle*>(currentplayer.get()) && !circlelocked && !restart) { 
 				currentplayer = std::make_unique<circle>(); 
 				swapped = true; 
+				if (setnum < 1) cheatswitch = true;
 			}
 			else if (keypressed(Action::switch3) && !dynamic_cast<octagon*>(currentplayer.get()) && !octagonlocked && !restart) { 
 				currentplayer = std::make_unique<octagon>(); 
 				swapped = true; 
-				nearestedge = 45.f; 
+				nearestedge = 45.f;
+				if (setnum < 2) cheatswitch = true;
 			}
 			else if (keypressed(Action::switch4) && !dynamic_cast<triangle*>(currentplayer.get()) && !trianglelocked && !restart) { 
 				currentplayer = std::make_unique<triangle>(); 
 				swapped = true; 
 				nearestedge = 120.f; 
+				if (setnum < 3) cheatswitch = true;
 			}
 			else if (keypressed(Action::switch5) && !dynamic_cast<hexagon*>(currentplayer.get()) && !hexagonlocked && !restart) { 
 				currentplayer = std::make_unique<hexagon>(); 
 				swapped = true; 
 				nearestedge = 60.f; 
+				if (setnum < 4) cheatswitch = true;
 			}
 			
 			if (swapped) {
