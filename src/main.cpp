@@ -53,11 +53,9 @@ int main()
 	//levels 13, 17, 26, 4, 8, look into
 	//as well as other levels but these ones I can remember
 	//ISSUES WITH WALKING THRU ONE TILE GAPS
-	//YOU CANT FALL TO DEATH: YOURE STUCK BELOW SCREEN IF YOU FALL
 	
 
 	//TO ADD!!!!!
-	//updating handbook (notif icon, hidden objects)
 	//more sfx (death especially)
 	
 

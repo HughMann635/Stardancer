@@ -17,6 +17,7 @@ void entity::rotateobject(sf::Vector2f& edge, tilemap& map, sf::Shape& shape, fl
     bool grounded_center = map.cliffCheck(center);
     bool cantipright = grounded && std::abs(btm1.y - btm2.y) < 0.5 && grounded_left && !grounded_right && !grounded_center && !zerogactive;
     bool cantipleft = grounded && std::abs(btm1.y - btm2.y) < 0.5 && grounded_right && !grounded_left && !grounded_center && !zerogactive;	
+    bool inonetile = (map.cliffCheck(sf::Vector2f(btm1.x, shape.getPosition().y - 10.f)) && map.cliffCheck(sf::Vector2f(btm1.x, shape.getPosition().y + 10.f))) || map.cliffCheck(sf::Vector2f(btm2.x, shape.getPosition().y - 10.f)) && map.cliffCheck(sf::Vector2f(btm2.x, shape.getPosition().y + 10.f));
 
     if (cantipright && !tipping_right && !tipping_left) {
         tipping_right = true;
@@ -59,7 +60,7 @@ void entity::rotateobject(sf::Vector2f& edge, tilemap& map, sf::Shape& shape, fl
         shape.getRotation().asDegrees() > 180 ? shape.rotate(sf::degrees(1)) : shape.rotate(sf::degrees(-1));
         if (std::abs(shape.getRotation().asDegrees()) < 5) shape.setRotation(sf::degrees(0));
     } 
-    else if (grounded && std::abs(velocity.x) <= 225.f) {
+    else if ((grounded && std::abs(velocity.x) <= 225.f) || inonetile) {
         rotation = 0.f;
         float nearestangle = 360;
         float currentangle = shape.getRotation().asDegrees();
