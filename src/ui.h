@@ -272,8 +272,6 @@ public:
         if (mouse_.y >= 200 && levelshade > 0) levelshade -= 3;
         else if (mouse_.y < 200 && levelshade < 225) levelshade += 3;
         level.setFillColor(sf::Color(255, 45, 200, levelshade));
-        pausetxt.setFillColor(sf::Color(255, 255, 80, levelshade));
-        pausebtn.setFillColor(sf::Color(255, 220, 0, levelshade));
         pausetxtshadow.setFillColor(sf::Color(0, 0, 0, 120.f/225.f*levelshade));
         pausebtnshadow.setFillColor(sf::Color(0, 0, 0, (235/225)*levelshade));
         std::string pb = "";
@@ -292,8 +290,7 @@ public:
     }
 
     void checkexit (sf::RenderWindow& window, sf::Sound& clicksound) {
-        if (keypressed(Action::goback) && !restart) state = State::pause;
-        if (!restart && btnpress(-1, clicksound, false, window, pausetxt, pausebtn, pausetxtshadow, pausebtnshadow, sf::Vector2f(120, 80), sf::Color(150, 112, 0), sf::Color(180, 180, 0), sf::Color(200, 200, 200), sf::Color(100, 100, 100))) state = State::pause;
+        if (!restart && btnpress(-1, clicksound, false, window, pausetxt, pausebtn, pausetxtshadow, pausebtnshadow, sf::Vector2f(120, 80), sf::Color(255, 255, 80, levelshade), sf::Color(255, 220, 0, levelshade), sf::Color(200, 200, 200, levelshade), sf::Color(100, 100, 100, levelshade))) state = State::pause;
     }
 };
 
@@ -320,16 +317,16 @@ public:
         resumetxtshadow(font),
         exittxtshadow(font)
     {
-        paused = maketext(40, sf::Color(170, 170, 80), "PAUSED", font, sf::Vector2f(width/2, 295));
+        paused = maketext(40, sf::Color(170, 255, 170), "PAUSED", font, sf::Vector2f(width/2, 295));
         pausedshadow = textshadow(235, 6, paused);
 
-        resumetxt = maketext(25, sf::Color(80, 210, 145), "SPACE TO RESUME", font, sf::Vector2f(width/2, 395));
-        resumebtn = makebtn(sf::Vector2f(resumetxt.getLocalBounds().size.x*1.2, resumetxt.getLocalBounds().size.y*2), sf::Color(10, 140, 75), sf::Vector2f(width/2, 395));
+        resumetxt = maketext(25, sf::Color(80, 210, 145), "RESUME LEVEL", font, sf::Vector2f(width/2, 395));
+        resumebtn = makebtn(sf::Vector2f(resumetxt.getLocalBounds().size.x*1.4, resumetxt.getLocalBounds().size.y*2), sf::Color(10, 140, 75), sf::Vector2f(width/2, 395));
         resumetxtshadow = textshadow(120, 3, resumetxt);
         resumebtnshadow = rectshadow(235, 6, resumebtn);
 
-        exittxt = maketext(25, sf::Color(145, 80, 210), "ESCAPE TO EXIT", font, sf::Vector2f(width/2, 445));
-        exitbtn = makebtn(sf::Vector2f(resumetxt.getLocalBounds().size.x*1.2, resumetxt.getLocalBounds().size.y*2), sf::Color(75, 10, 140), sf::Vector2f(width/2, 445));
+        exittxt = maketext(25, sf::Color(145, 80, 210), "EXIT LEVEL", font, sf::Vector2f(width/2, 445));
+        exitbtn = makebtn(sf::Vector2f(resumetxt.getLocalBounds().size.x*1.4, resumetxt.getLocalBounds().size.y*2), sf::Color(75, 10, 140), sf::Vector2f(width/2, 445));
         exittxtshadow = textshadow(120, 3, exittxt);
         exitbtnshadow = rectshadow(235, 6, exitbtn);
     }
@@ -355,8 +352,6 @@ public:
             switched = true;
             targetstate = State::mainmenu;
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) state = State::playing;
-        if (keypressed(Action::goback)) state = State::mainmenu; 
     }
 };
 
@@ -538,8 +533,10 @@ public:
                 }
             }
         }
-        
-        if (keypressed(Action::goback)) state = State::mainmenu;
+        if (keypressed(Action::goback)) { 
+            switched = true; 
+            targetstate = State::mainmenu; 
+        }
     }
 };
 
@@ -702,7 +699,10 @@ public:
             volumenumtxt = maketext(25, sf::Color(140, 255, 200), std::to_string(volumelevel), font, sf::Vector2f(width/2+80, 290)); 
             volumenumshadow = textshadow(235, 4, volumenumtxt);
         }
-        if (keypressed(Action::goback) && !esckeyheld) state = State::mainmenu;
+        if (keypressed(Action::goback)) { 
+            switched = true; 
+            targetstate = State::mainmenu; 
+        }
     }
     void keybind (sf::RenderWindow& window, const sf::Event& event, sf::Sound& clicksound) {
         if (waiting) {
@@ -777,7 +777,10 @@ public:
     }
 
     void update (sf::RenderWindow& window) {
-        if (keypressed(Action::goback)) state = State::mainmenu;
+        if (keypressed(Action::goback)) { 
+            switched = true; 
+            targetstate = State::mainmenu; 
+        }
         sf::Vector2f mousepos = window.mapPixelToCoords(sf::Mouse::getPosition(window), window.getDefaultView());
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && creditstxt.getGlobalBounds().contains(mousepos)) {
             for (int i = 0; i < 31; i++) {
@@ -957,7 +960,10 @@ public:
         }
     }
     void update (sf::RenderWindow& window, float deltatime, sf::Sound& clicksound) {
-        if (keypressed(Action::goback)) state = State::mainmenu;
+        if (keypressed(Action::goback)) { 
+            switched = true; 
+            targetstate = State::mainmenu; 
+        }
         if (btnpress(-1, clicksound, false, window, shapestxt, shapesbtn, shapestxtshadow, shapesbtnshadow, sf::Vector2f(width/2, 90), sf::Color(180, 90, 50), sf::Color(230, 140, 100), sf::Color(100, 100, 100), sf::Color(200, 100, 100)) && menunum != 1) { 
             menunum = 1; 
             tilename = maketext(35, sf::Color(255, 40, 60), "SELECT A TILE", font, sf::Vector2f(640, 370));
