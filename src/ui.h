@@ -291,6 +291,7 @@ public:
 
     void checkexit (sf::RenderWindow& window, sf::Sound& clicksound) {
         if (!restart && btnpress(-1, clicksound, false, window, pausetxt, pausebtn, pausetxtshadow, pausebtnshadow, sf::Vector2f(120, 80), sf::Color(255, 255, 80, levelshade), sf::Color(255, 220, 0, levelshade), sf::Color(200, 200, 200, levelshade), sf::Color(100, 100, 100, levelshade))) state = State::pause;
+        if (keypressed(Action::goback)) state = State::pause;
     }
 };
 
