@@ -57,12 +57,6 @@ int main()
 	//TO ADD!!!!!
 	//more sfx (death especially)
 	//AN ACTUAL SCREEN FOR BEATING LEVEL 30!!!!!
-	
-
-	//RETURNING TO OLD LEVELS - mainly done
-	//but if you switch to a mroe advanced shape for a set that shouldn't have it the timer
-	//- will change color -> red
-	//- nullify the pb for that run
 
 
 	while (window.isOpen()) {
