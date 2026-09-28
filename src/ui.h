@@ -1035,7 +1035,7 @@ public:
                         break;
                         case 2:
                         tilename = maketext(35, sf::Color(160, 100, 200), "OCTAGON", font, sf::Vector2f(640, 370));
-                        tiledesc = maketext(20, sf::Color(160, 100, 200), "The octagon can wall jump! There are three types of walljumps.\nHold left shift when wall jumping to jump fast but without much height.\nHold right shift while wall jumping to jump high with less horizontal reach.\nIf not holding either shift, you just perform a normal wall jump.", font, sf::Vector2f(640, 450));
+                        tiledesc = maketext(20, sf::Color(160, 100, 200), "The octagon can wall jump! There are three types of walljumps.\nHold left shift when wall jumping to jump fast but without much height.\nHold right shift while wall jumping to jump high with less horizontal reach.\nIf not holding either shift, you just perform a normal wall jump.\n\nHit the Down key in midair to exit walljumping state and reset x-velocity, \nletting you move freely and chain jumps.", font, sf::Vector2f(640, 450));
                         if (unlocked[12] == 0) {
                             tilename = maketext(35, sf::Color(255, 40, 60), "???", font, sf::Vector2f(640, 370));
                             tiledesc = maketext(25, sf::Color(255, 40, 60), "Complete more levels to discover this character!", font, sf::Vector2f(640, 450));
