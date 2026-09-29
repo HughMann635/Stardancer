@@ -44,13 +44,20 @@ int main()
 	view.setSize(sf::Vector2f(camwidth, camheight));
 	view.setCenter(sf::Vector2f(currentplayer -> shape().getPosition().x, currentplayer -> shape().getPosition().y));
 
-
-	//BUGS!!!!!
-	//rotation bugs - ONLY SETTLING IS ACTUALLY AN ISSUE RN
+	//BUGS!!!!! NONE FN, ROTATION IS NOT SUCH A BIG ISSUE
 	
 	//TO ADD!!!!!
 	//more sfx (death especially)
 	//ANIMATION FOR TRIANGLE TP - DONE! TRIANGLE RESIZES RAPIDLY, MAY UPDATE LATER
+
+	//NEW NAMES - CURRENT: worlds of blockman
+	//Starjumper
+	//Stardancer (fav)
+	//Astral Odyssey (tuff but feels off)
+	//Leaps and Bounds
+	//Stardance: [something]
+	//Space Racer
+	//Spaceshifter
 
 	while (window.isOpen()) {
 		float deltatime = timer.restart().asSeconds();
