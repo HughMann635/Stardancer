@@ -36,9 +36,6 @@ int main()
 	sf::Sprite envsprite (env.getTexture());
 	sf::Clock background_lapse;
 	sf::SoundBuffer buffer;
-	if (!buffer.loadFromFile("clicksound1.wav")) {
-		std::cout << "Couldn't load file";
-	}
 	sf::Sound clicksound (buffer); 
 	sf::Listener::setGlobalVolume(volumelevel*15);
 	clicksound.setVolume(sf::Listener::getGlobalVolume());
@@ -50,16 +47,10 @@ int main()
 
 	//BUGS!!!!!
 	//rotation bugs - ONLY SETTLING IS ACTUALLY AN ISSUE RN
-	//LEVEL 17 IS BORDERLINE UNPLAYABLE
 	
-
 	//TO ADD!!!!!
 	//more sfx (death especially)
-	//AN ACTUAL SCREEN FOR BEATING LEVEL 30!!!!! FOR NOW JUST RETURNS TO MAIN MENU WHICH SHOULD BE OK???
-	//ANIMATION FOR TRIANGLE TP
-
-	//DELETE ALL STD::COUTS, DEBUGS, PLACEHOLDERS, ETC.
-
+	//ANIMATION FOR TRIANGLE TP - DONE! TRIANGLE RESIZES RAPIDLY, MAY UPDATE LATER
 
 	while (window.isOpen()) {
 		float deltatime = timer.restart().asSeconds();

@@ -345,6 +345,7 @@ void triangle::updatepos (float deltatime, tilemap& map)  {
         if (keypressed(Action::special1) || keypressed (Action::special2)) {
             if (keypressed(Action::right)) {
                 if (!map.predictCollision(shape(), sf::Vector2f(50, 0))) {
+                    trianglescale = 0.3;
                     playershape.setPosition(sf::Vector2f(playershape.getPosition().x + 50, playershape.getPosition().y));
                     velocity = sf::Vector2f(0, 0);
                     tp_timer.restart();
@@ -352,13 +353,15 @@ void triangle::updatepos (float deltatime, tilemap& map)  {
                 }
             } else if (keypressed(Action::left)) {
                 if (!map.predictCollision(shape(), sf::Vector2f(-50, 0))) {
+                    trianglescale = 0.3;
                     playershape.setPosition(sf::Vector2f(playershape.getPosition().x - 50, playershape.getPosition().y));
                     velocity = sf::Vector2f(0, 0);
                     tp_timer.restart();
                     tped = true;
                 }
             } else if (keypressed(Action::jump)) {
-                if (!map.predictCollision(shape(), sf::Vector2f(0, -50))) {                        
+                if (!map.predictCollision(shape(), sf::Vector2f(0, -50))) {    
+                    trianglescale = 0.3;       
                     playershape.setPosition(sf::Vector2f(playershape.getPosition().x, playershape.getPosition().y - 50));
                     velocity = sf::Vector2f(0, 0);
                     tp_timer.restart();
@@ -366,6 +369,7 @@ void triangle::updatepos (float deltatime, tilemap& map)  {
                 }
             } else if (((keypressed(Action::down))) && shape().getPosition().y < (height-40)) {
                 if (!map.predictCollision(shape(), sf::Vector2f(0, 50))) {
+                    trianglescale = 0.3;
                     playershape.setPosition(sf::Vector2f(playershape.getPosition().x, playershape.getPosition().y + 50));
                     velocity = sf::Vector2f(0, 0);
                     tp_timer.restart();
@@ -377,6 +381,7 @@ void triangle::updatepos (float deltatime, tilemap& map)  {
     if ((tp_timer.getElapsedTime().asSeconds() < 3.f && tped) && triangleshade > 135) {
         triangleshade -= 2;
     }
+    if (trianglescale < 1) trianglescale += 0.025;
 
     if (zerogactive) {
         if (keypressed(Action::down)) {
@@ -406,6 +411,7 @@ void triangle::updatepos (float deltatime, tilemap& map)  {
     playershape.setFillColor(sf::Color(0, triangleshade, 0));
     if (!grounded && velocity.y <= 1050) velocity.y += gravity * deltatime;
     shape().move(velocity * deltatime);
+    playershape.setScale(sf::Vector2f(trianglescale, trianglescale));
 
     if (playershape.getPosition().y > 780) restart = true;
 

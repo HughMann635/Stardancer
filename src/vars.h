@@ -115,6 +115,7 @@ inline bool tped = false;
 inline sf::Clock tp_timer;
 inline sf::Clock jump_timer;
 inline int triangleshade = 255;
+inline float trianglescale = 1.f;
 inline bool wallhuggingleft = false;
 inline bool wallhuggingright = false;
 inline bool walljumped = false;
