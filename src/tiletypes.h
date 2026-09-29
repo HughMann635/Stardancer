@@ -16,6 +16,7 @@ class ground_ : public tileTypes {
 public:
     sf::ConvexShape ground_block;
     std::vector<sf::CircleShape> sand;
+    sf::CircleShape sandspeck;
     ground_(sf::Vector2f position) {
         ground_block.setPointCount(4);
         ground_block.setPoint(0, sf::Vector2f(0, 0));
@@ -26,7 +27,6 @@ public:
         ground_block.setOutlineColor(sf::Color(215, 160, 160));
         ground_block.setPosition(sf::Vector2f(position));
         for (int i = 0; i < std::rand() % 5 + 5; i++) {
-            sf::CircleShape sandspeck;
             sandspeck.setRadius((std::rand() % 2 + 1)/2);
             int sandshade = std::rand() % 60;
             sandspeck.setFillColor(sf::Color(255-sandshade, 200-sandshade, 200-sandshade));
