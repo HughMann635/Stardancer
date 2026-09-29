@@ -15,6 +15,7 @@ public:
 class ground_ : public tileTypes {
 public:
     sf::ConvexShape ground_block;
+    std::vector<sf::CircleShape> sand;
     ground_(sf::Vector2f position) {
         ground_block.setPointCount(4);
         ground_block.setPoint(0, sf::Vector2f(0, 0));
@@ -23,12 +24,23 @@ public:
         ground_block.setPoint(3, sf::Vector2f(0, 20));
         ground_block.setFillColor(sf::Color(255, 200, 200));
         ground_block.setOutlineColor(sf::Color(215, 160, 160));
-        //ground_block.setOutlineThickness(-1.f);
         ground_block.setPosition(sf::Vector2f(position));
+        for (int i = 0; i < std::rand() % 5 + 5; i++) {
+            sf::CircleShape sandspeck;
+            sandspeck.setRadius((std::rand() % 2 + 1)/2);
+            int sandshade = std::rand() % 60;
+            sandspeck.setFillColor(sf::Color(255-sandshade, 200-sandshade, 200-sandshade));
+            sandspeck.setOrigin(sf::Vector2f(sandspeck.getRadius(), sandspeck.getRadius()));
+            sandspeck.setPosition(sf::Vector2f(position.x + std::rand() % 14 + 3, position.y + std::rand() % 14 + 3));
+            sand.push_back(sandspeck);
+        }
     }    
 
     void draw (sf::RenderTarget& window) override {
         window.draw(ground_block);
+        for (auto& pos: sand) {
+            window.draw(pos);
+        }
     }
 
     sf::Shape& collide() override {
@@ -101,7 +113,6 @@ public:
 
 };
 
-//Black circle with particles orbiting it 
 class blackhole : public tileTypes {
 public:
     sf::CircleShape blackholeblock;
@@ -179,7 +190,6 @@ public:
 
 };
 
-//Lava - kills upon entering
 class lava : public tileTypes {
 public:
     sf::ConvexShape lavablock;
@@ -313,8 +323,6 @@ public:
     }
 };
 
-//the only way to justify the amount of time I spent on block-pushing physics
-//if a block or the player is on the button, a door will open
 class button : public tileTypes {
 public:
     sf::ConvexShape buttonblock[3];
