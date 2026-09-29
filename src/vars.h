@@ -8,7 +8,7 @@
 //Window settings
 const int width = 1280;
 const int height = 720;
-inline std::string title = "Worlds of Blockman";
+inline std::string title = "Stardancer";
 const int camwidth = 960;
 const int camheight = 540;
 const int stars = 700;

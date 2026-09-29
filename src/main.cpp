@@ -50,15 +50,6 @@ int main()
 	//more sfx (death especially)
 	//ANIMATION FOR TRIANGLE TP - DONE! TRIANGLE RESIZES RAPIDLY, MAY UPDATE LATER
 
-	//NEW NAMES - CURRENT: worlds of blockman
-	//Starjumper
-	//Stardancer (fav)
-	//Astral Odyssey (tuff but feels off)
-	//Leaps and Bounds
-	//Stardance: [something]
-	//Space Racer
-	//Spaceshifter
-
 	while (window.isOpen()) {
 		float deltatime = timer.restart().asSeconds();
 		

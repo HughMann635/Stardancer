@@ -110,7 +110,7 @@ public:
         handbooktxt(font),
         handbooktxtshadow(font)
     {
-        title = maketext(55, sf::Color(170, 100, 255), "WORLDS OF BLOCKMAN", font, sf::Vector2f(width/2, 100));
+        title = maketext(60, sf::Color(255, 255, 60), "STARDANCER", font, sf::Vector2f(width/2, 140));
         titleshadow = textshadow(235, 6, title);
 
         starttxt = maketext(35, sf::Color(170, 100, 255), "PLAY", font, sf::Vector2f(width/2, 450));
