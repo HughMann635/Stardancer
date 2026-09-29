@@ -50,11 +50,13 @@ int main()
 
 	//BUGS!!!!!
 	//rotation bugs - ONLY SETTLING IS ACTUALLY AN ISSUE RN
+	//LEVEL 17 IS BORDERLINE UNPLAYABLE
 	
 
 	//TO ADD!!!!!
 	//more sfx (death especially)
 	//AN ACTUAL SCREEN FOR BEATING LEVEL 30!!!!! FOR NOW JUST RETURNS TO MAIN MENU WHICH SHOULD BE OK???
+	//ANIMATION FOR TRIANGLE TP
 
 
 	while (window.isOpen()) {
