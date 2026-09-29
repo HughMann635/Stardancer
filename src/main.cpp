@@ -58,6 +58,8 @@ int main()
 	//AN ACTUAL SCREEN FOR BEATING LEVEL 30!!!!! FOR NOW JUST RETURNS TO MAIN MENU WHICH SHOULD BE OK???
 	//ANIMATION FOR TRIANGLE TP
 
+	//DELETE ALL STD::COUTS, DEBUGS, PLACEHOLDERS, ETC.
+
 
 	while (window.isOpen()) {
 		float deltatime = timer.restart().asSeconds();
