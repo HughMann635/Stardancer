@@ -48,14 +48,13 @@ struct Tile {
 // 6 = double spike POINTED LEFT
 // 7 = double spike POINTED UP
 // 8 = double spike POINTED RIGHT
-// 5 = 
 // L = lava
 // W = water
 // Z = zero-g zone
 // B = black hole
 // P = pushable block
 // ^ = spring
-// O = button (looks like a circle so yeah)
+// O = button
 // D = door
 
 class tilemap {
@@ -138,7 +137,7 @@ public:
                         statictilelist.push_back(std::move(new_tile));
                         break;
                     case 'P':
-                        new_tile.type = tiletype::block_push; //cuz i cant have two 'B' cases
+                        new_tile.type = tiletype::block_push;
                         new_tile.tile = std::make_unique<block>(sf::Vector2f(j*playerdim, i*playerdim));
                         dynamictilelist.push_back(std::move(new_tile));
                         break;
@@ -228,12 +227,11 @@ public:
 
     void checkCollisions (entity& Object, float deltatime) {
         
-        //STATE VAR RESETS
         swimming = false;
         zerogactive = false;
         wallhuggingright = false;
         wallhuggingleft = false;
-        landed = false; //PLACEHOLDER
+        landed = false;
         square* square_ = dynamic_cast<square*>(&Object);
 
         for (auto& pos: dynamictilelist) {
@@ -279,9 +277,7 @@ public:
             }
         }
 
-        //DOOR SAFETY CHECK
-        //y'know how an elevator door doesn't close on your hand
-        //yeah this is like that
+        //DOOR SAFETY CHECK (ensures that door doesn't close on anyone)
         for (auto& pos: statictilelist) {
             if (pos.type != tiletype::button) continue;
             button* button_ = dynamic_cast<button*>(pos.tile.get());
@@ -325,8 +321,7 @@ public:
             }
         }
 
-        //PLAYER ENV. DETECTION
-        //need this since player collision checks happen after block checks but player-block pushing logic changes in zero g
+        //PLAYER ENV. DETECTION player collision checks happen after block checks but player-block pushing logic changes in zero g
         auto playerverts_ = getvertices(Object.shape());
         for (auto& pos: envtilelist) {
             if (!pos.tile || pos.type != tiletype::water && pos.type != tiletype::zero_g) continue;
