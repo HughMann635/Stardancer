@@ -308,6 +308,7 @@ public:
     sf::Text exittxtshadow;
     sf::RectangleShape resumebtnshadow;
     sf::RectangleShape exitbtnshadow;
+    sf::RectangleShape pauseblur;
 
     pause() :
         font("AldotheApache.ttf"),
@@ -330,6 +331,9 @@ public:
         exitbtn = makebtn(sf::Vector2f(resumetxt.getLocalBounds().size.x*1.4, resumetxt.getLocalBounds().size.y*2), sf::Color(75, 10, 140), sf::Vector2f(width/2, 445));
         exittxtshadow = textshadow(120, 3, exittxt);
         exitbtnshadow = rectshadow(235, 6, exitbtn);
+
+        pauseblur.setSize(sf::Vector2f(width, height));
+		pauseblur.setFillColor(sf::Color(0, 0, 0, 135));
     }
 
     void draw (sf::RenderWindow& window) {

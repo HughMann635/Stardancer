@@ -66,7 +66,6 @@ int main()
 		sky.drawsky(window, view.getCenter());
 		sky.updatesky(deltatime);
 		if (state == State::playing) {
-			window.setView(window.getDefaultView());
 			window.setView(view);
 			menuenter = false;
 			if (!gamestart) {
@@ -305,9 +304,7 @@ int main()
 			currentplayer -> drawscreen(window);
 			map.drawenv(window);
 			window.setView(window.getDefaultView());
-			sf::RectangleShape pauseblur(sf::Vector2f(width, height));
-			pauseblur.setFillColor(sf::Color(0, 0, 0, 135));
-			window.draw(pauseblur);
+			window.draw(pausemenu.pauseblur);
 			pausemenu.draw(window); 
 			window.setView(view);
 			if (!esckeyheld) pausemenu.checkaction(window, clicksound);
