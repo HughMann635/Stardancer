@@ -36,6 +36,9 @@ int main()
 	sf::Sprite envsprite (env.getTexture());
 	sf::Clock background_lapse;
 	sf::SoundBuffer buffer;
+	if (!buffer.loadFromFile("clicksound1.wav")) {
+		std::cout << "Couldn't load file";
+	}
 	sf::Sound clicksound (buffer); 
 	sf::Listener::setGlobalVolume(volumelevel*15);
 	clicksound.setVolume(sf::Listener::getGlobalVolume());
