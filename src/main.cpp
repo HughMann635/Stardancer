@@ -120,48 +120,52 @@ int main()
 				}
 			} 
 			if (newlevel) {
-				if ((pbs[setnum*6+levelnum] > leveltimer.getElapsedTime().asMilliseconds() || pbs[setnum*6+levelnum] == 0) && !cheatswitch) pbs[setnum*6+levelnum] = leveltimer.getElapsedTime().asMilliseconds();
-				completed[setnum*6+levelnum] = 1;
-				unlocked[setnum*6+levelnum+1] = 1;
-				if (((setnum*6+levelnum+1) % 6 == 0 || setnum*6+levelnum+1 == 1 || setnum*6+levelnum+1 == 2 || setnum*6+levelnum+1 == 3 || setnum*6+levelnum+1 == 26)) { 
-					newnotif = true; 
-					updatehdbk = true;
-				}
-				else if (newnotif) newnotif = true;
-				else newnotif = false;
-				cheatswitch = false;
-				levelnum += 1;
-				if (levelnum > 5) {
-					state = State::mainmenu;
-					levelnum = 0;
-					if (setnum == 4) {
-						state = State::mainmenu;
+				if (currentplayer -> shape().getFillColor().a > 0) {
+					currentplayer -> shape().setFillColor(sf::Color(currentplayer->shape().getFillColor().r, currentplayer->shape().getFillColor().g, currentplayer->shape().getFillColor().b, currentplayer->shape().getFillColor().a - (3)));
+				} 
+				else {
+					if ((pbs[setnum*6+levelnum] > leveltimer.getElapsedTime().asMilliseconds() || pbs[setnum*6+levelnum] == 0) && !cheatswitch) pbs[setnum*6+levelnum] = leveltimer.getElapsedTime().asMilliseconds();
+					completed[setnum*6+levelnum] = 1;
+					unlocked[setnum*6+levelnum+1] = 1;
+					if (((setnum*6+levelnum+1) % 6 == 0 || setnum*6+levelnum+1 == 1 || setnum*6+levelnum+1 == 2 || setnum*6+levelnum+1 == 3 || setnum*6+levelnum+1 == 26)) { 
+						newnotif = true; 
+						updatehdbk = true;
 					}
-					else setnum += 1;
+					else if (newnotif) newnotif = true;
+					else newnotif = false;
+					cheatswitch = false;
+					levelnum += 1;
+					if (levelnum > 5) {
+						state = State::mainmenu;
+						levelnum = 0;
+						if (setnum == 4) {
+							state = State::mainmenu;
+						}
+						else setnum += 1;
+					}
+					map.statictilelist.clear();
+					map.dynamictilelist.clear();
+					map.envtilelist.clear();
+					currentplayer = std::make_unique<square>();
+					map.loadmap(levels[setnum][levelnum], levels_env[setnum][levelnum]);
+					env.clear(sf::Color::Transparent);
+					map.drawenv(env);
+					env.display();
+					sf::Sprite envsprite(env.getTexture());
+					tped = false;
+					tp_timer.restart();
+					leveltimer.restart();
+					triangleshade = 255;
+					currentplayer -> shape().setPosition(map.spawn);
+					currentplayer -> velocity = sf::Vector2f(0.f, 0.f);
+					gravity = 1800.f;
+					currentplayer -> shape().setRotation(sf::degrees(0));
+					currentplayer -> rotating = false;
+					currentplayer -> freefallingtip = false;
+					tipping_right = false;
+					tipping_left = false;
+					newlevel = false;
 				}
-				
-				map.statictilelist.clear();
-				map.dynamictilelist.clear();
-				map.envtilelist.clear();
-				currentplayer = std::make_unique<square>();
-				map.loadmap(levels[setnum][levelnum], levels_env[setnum][levelnum]);
-				env.clear(sf::Color::Transparent);
-				map.drawenv(env);
-				env.display();
-				sf::Sprite envsprite(env.getTexture());
-				tped = false;
-				tp_timer.restart();
-				leveltimer.restart();
-				triangleshade = 255;
-				currentplayer -> shape().setPosition(map.spawn);
-				currentplayer -> velocity = sf::Vector2f(0.f, 0.f);
-				gravity = 1800.f;
-				currentplayer -> shape().setRotation(sf::degrees(0));
-				currentplayer -> rotating = false;
-				currentplayer -> freefallingtip = false;
-				tipping_right = false;
-				tipping_left = false;
-				newlevel = false;
 			} 
 			
 			circlelocked = false;
@@ -189,17 +193,17 @@ int main()
 			currentplayer -> jump(deltatime);
 			blockonhead = false;
 			currentplayer -> grounded = false;
-			if (!inblackhole && currentplayer -> shape().getPosition().y < 730 && !restart) currentplayer -> updatepos(deltatime, map);
-			if (restart && currentplayer -> shape().getPosition().y) currentplayer -> shape().move(sf::Vector2f(currentplayer -> velocity.x*deltatime*0.05, currentplayer -> velocity.y*deltatime*0.05));
+			if (!inblackhole && currentplayer -> shape().getPosition().y < 730 && !restart && !newlevel) currentplayer -> updatepos(deltatime, map);
+			if ((restart || newlevel) && currentplayer -> shape().getPosition().y) currentplayer -> shape().move(sf::Vector2f(currentplayer -> velocity.x*deltatime*0.05, currentplayer -> velocity.y*deltatime*0.05));
 			if (currentplayer -> shape().getPosition().y > 730) restart = true;
 			map.updatemap(deltatime);
 			inblackhole = false;
 			map.checkCollisions(*currentplayer, deltatime);
-			if (!restart) currentplayer -> rotateobject(edge, map, currentplayer -> shape(), deltatime, movespeed, swimming, zerogactive, currentplayer -> grounded, nearestedge);
+			if (!restart && !newlevel) currentplayer -> rotateobject(edge, map, currentplayer -> shape(), deltatime, movespeed, swimming, zerogactive, currentplayer -> grounded, nearestedge);
 			lastframe_pos = sf::Vector2f(currentplayer -> shape().getPosition());
 			lastframe_vel = sf::Vector2f(currentplayer -> velocity);
 	
-			if (keypressed(Action::restart)) { 
+			if (keypressed(Action::restart) && !newlevel) { 
 				restart = true;
 				restarted = true;
 			}

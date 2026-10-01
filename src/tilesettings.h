@@ -598,26 +598,17 @@ public:
                         spike* G = dynamic_cast<spike*>(pos.tile.get());
                         if (!G) continue;
                         auto verticestile = getvertices(G -> spikeblock);
-                        if (satCollide(verticesobj, verticestile)) restart = true;
+                        if (satCollide(verticesobj, verticestile) && !newlevel) restart = true;
                     } 
                     break;
                     case tiletype::doublespike: {
                         doublespike* G = dynamic_cast<doublespike*>(pos.tile.get());
                         auto spikevertices = getvertices(G->collide());
-                        if (G && satCollide(getvertices(Object.shape()), spikevertices)) restart = true;
+                        if (G && satCollide(getvertices(Object.shape()), spikevertices) && !newlevel) restart = true;
                         auto spikevertices2 = getvertices(G->getshape2());
-                        if (G && satCollide(getvertices(Object.shape()), spikevertices2)) restart = true;
+                        if (G && satCollide(getvertices(Object.shape()), spikevertices2) && !newlevel) restart = true;
                         break;
                     }
-                    case tiletype::lava:
-                    restart = true;
-                    break;
-                    case tiletype::water:
-                    swimming = true;
-                    break;
-                    case tiletype::zero_g:
-                    zerogactive = true;
-                    break;
                     case tiletype::blackhole: {
                         blackhole* ring = dynamic_cast<blackhole*>(pos.tile.get());
                         auto ringvertices = getvertices(ring->collide());
@@ -639,7 +630,7 @@ public:
                             Object.velocity.y -= direction.y * 1800 * deltatime;
                             Object.shape().move(Object.velocity * deltatime);
                         }
-                        if (satCollide(getvertices(Object.shape()), blackholevertices)) restart = true;
+                        if (satCollide(getvertices(Object.shape()), blackholevertices) && !newlevel) restart = true;
                         break;
                     }
                     case tiletype::coin: {
@@ -660,7 +651,7 @@ public:
                     break; 
                     }
                     case tiletype::exit:
-                    newlevel = true;
+                    if (!restart) newlevel = true;
                     break;
                     default:
                     break;
