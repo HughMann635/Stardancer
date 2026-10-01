@@ -285,6 +285,7 @@ int main()
 				currentplayer -> drawscreen(window);
 				menuenter = true;
 			}
+			currentplayer->shape().setFillColor(sf::Color(currentplayer->shape().getFillColor().r, currentplayer->shape().getFillColor().g, currentplayer->shape().getFillColor().b, 255));
 			restart = false;
 			swapped = false;
 			if (currentplayer -> grounded) jumpcount = 2;
