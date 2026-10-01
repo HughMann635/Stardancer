@@ -123,7 +123,10 @@ int main()
 				if ((pbs[setnum*6+levelnum] > leveltimer.getElapsedTime().asMilliseconds() || pbs[setnum*6+levelnum] == 0) && !cheatswitch) pbs[setnum*6+levelnum] = leveltimer.getElapsedTime().asMilliseconds();
 				completed[setnum*6+levelnum] = 1;
 				unlocked[setnum*6+levelnum+1] = 1;
-				if (((setnum*6+levelnum+1) % 6 == 0 || setnum*6+levelnum+1 == 1 || setnum*6+levelnum+1 == 2 || setnum*6+levelnum+1 == 3 || setnum*6+levelnum+1 == 26)) newnotif = true;
+				if (((setnum*6+levelnum+1) % 6 == 0 || setnum*6+levelnum+1 == 1 || setnum*6+levelnum+1 == 2 || setnum*6+levelnum+1 == 3 || setnum*6+levelnum+1 == 26)) { 
+					newnotif = true; 
+					updatehdbk = true;
+				}
 				else if (newnotif) newnotif = true;
 				else newnotif = false;
 				cheatswitch = false;
@@ -316,6 +319,7 @@ int main()
 			lvlselect.draw(window);
 		} else if (state == State::credits) {
 			if (menu.navback(window, clicksound)) targetstate = State::mainmenu;
+			updatehdbk = true;
 			map.drawmap(window);
 			window.setView(window.getDefaultView());
 			credits.draw(window);

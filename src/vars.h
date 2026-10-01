@@ -30,6 +30,7 @@ inline bool cheatswitch = false;
 inline int pbs[30] = {0};
 inline sf::Clock leveltimer;
 inline bool newnotif = false;
+inline bool updatehdbk = false;
 
 //States stuff
 enum class State {

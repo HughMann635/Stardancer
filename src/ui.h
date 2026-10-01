@@ -1159,7 +1159,10 @@ public:
                 }
             }
         }
-        maketiles();
+        if (updatehdbk) { 
+            maketiles();
+            updatehdbk = false; 
+        }
     }
 };
 
