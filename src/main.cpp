@@ -47,12 +47,6 @@ int main()
 	view.setSize(sf::Vector2f(camwidth, camheight));
 	view.setCenter(sf::Vector2f(currentplayer -> shape().getPosition().x, currentplayer -> shape().getPosition().y));
 
-	//BUGS!!!!! NONE FN, ROTATION IS NOT SUCH A BIG ISSUE
-	
-	//TO ADD!!!!!
-	//more sfx (death especially)
-	//ANIMATION FOR TRIANGLE TP - DONE! TRIANGLE RESIZES RAPIDLY, MAY UPDATE LATER
-
 	while (window.isOpen()) {
 		float deltatime = timer.restart().asSeconds();
 		
