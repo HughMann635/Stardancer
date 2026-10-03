@@ -791,6 +791,7 @@ public:
             for (int i = 0; i < 31; i++) {
                 unlocked[i] = 1;
             }
+            creditsclicked = true;
         }
     }
 };
@@ -1130,7 +1131,7 @@ public:
                         break;
                         case 5:
                         tilename = maketext(35, sf::Color(150, 150, 150), "PUSHABLE BLOCK", font, sf::Vector2f(640, 370));
-                        tiledesc = maketext(25, sf::Color(150, 150, 150), "These are blocks you can move around to reach farther\nand push buttons! Keep in mind: you cannot push two\nstacked blocks in the direction they're\nstacked, and gravity applies to them just as it does to you.", font, sf::Vector2f(640, 450));
+                        tiledesc = maketext(25, sf::Color(150, 150, 150), "These are blocks you can move around to reach farther\nand push buttons! Keep in mind: you cannot push two\nstacked blocks in the direction they're\nstacked, and gravity applies to them just as it does to you. They do not collide with spikes; keep this in mind for some levels!", font, sf::Vector2f(640, 450));
                         if (unlocked[2] == 0) {
                             tilename = maketext(35, sf::Color(255, 40, 60), "???", font, sf::Vector2f(640, 370));
                             tiledesc = maketext(25, sf::Color(255, 40, 60), "Complete more levels to discover this obstacle!", font, sf::Vector2f(640, 450));

@@ -323,6 +323,10 @@ int main()
 			window.setView(window.getDefaultView());
 			credits.draw(window);
 			credits.update(window);
+			if (creditsclicked) {
+				clicksound.play();
+				creditsclicked = false;
+			}
 		} else if (state == State::handbook) {
 			if (menu.navback(window, clicksound)) targetstate = State::mainmenu;
 			if (!handbookenter) {
