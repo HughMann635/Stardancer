@@ -766,6 +766,7 @@ public:
         
         creditscontent = maketext(25, sf::Color(20, 20, 20),
         "This game was designed and coded by Zahran G. The only external assets\nused is the font, called Aldo the Apache (designed by AJ Paglia).\n\n"
+        "I designed this game using C++ and the Simple and Fast Multimedia Library,\nwithout the use of any external engines.\n\n"
         "AI Use: Minimal AI was used solely for debugging core physics and\ncollision algorithms. Art, sound effects, game design, etc. are fully human.\n\n"
         "Click the CREDITS title for a surprise! :)"
         , font, sf::Vector2f(0, 0));
