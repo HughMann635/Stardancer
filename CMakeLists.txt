@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(CMakeSFMLProject LANGUAGES CXX)
+project(stardancer LANGUAGES CXX)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
@@ -20,16 +20,16 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/src/assets/AldotheApache.ttf")
 
 endif()
 
-add_executable(main src/main.cpp src/players.cpp)
-target_compile_features(main PRIVATE cxx_std_17)
-target_link_libraries(main PRIVATE SFML::Graphics SFML::Audio SFML::System SFML::Window)
+add_executable(stardancer src/main.cpp src/players.cpp)
+target_compile_features(stardancer PRIVATE cxx_std_17)
+target_link_libraries(stardancer PRIVATE SFML::Graphics SFML::Audio SFML::System SFML::Window)
 
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT main)
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT stardancer)
 
 add_custom_command(
-    TARGET main POST_BUILD
+    TARGET stardancer POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${CMAKE_SOURCE_DIR}/src/assets"
-        "$<TARGET_FILE_DIR:main>"
+        "$<TARGET_FILE_DIR:stardancer>"
     COMMENT ""
 )
