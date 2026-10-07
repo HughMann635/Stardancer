@@ -7,9 +7,6 @@ Watch the 100% walkthrough of the game here: [I'll add the link here eventually]
 
 Play the game here: [I'll add the link here eventually]
 
-Rephrase the above ones?
-
-
 ## So what's in the game?
 - 30 distinct, challenging levels featuring puzzles and shortcuts
 - A plethora of unique obstacles and environments
@@ -74,19 +71,18 @@ cd Stardancer
 cmake -B build
 ```
 
-4. Build the executable:
+3. Build the executable:
 ```
 cmake --build build --config Release
 ```
 
-6. Run the game:
-Find the binary and assets automatically placed in
+4. Run the game. Find the binary and assets automatically placed in
 ```
 build/bin/Release/stardancer.exe
 ```
 
 
-## Credits, Acknowledgements, and License
+## Credits and Acknowledgements
 - AI use: Used AI for minor debugging in physics and collision-related sections, but all artwork, game design, UI, etc. was created by me (as well as most initial physics/collision logic)
 - I heavily relied on the **Simple and Fast Multimedia Library (SFML)** in creating this game.
 
