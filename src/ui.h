@@ -1082,7 +1082,7 @@ public:
             for (int i = 0; i < objecttiles.size(); i++) {
                 auto& pos = objecttiles[i];
                 sf::Vector2f mousepos = sf::Vector2f(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
-                if (pos->collide().getGlobalBounds().contains(mousepos) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+                if ((pos->collide().getGlobalBounds().contains(mousepos) || (dynamic_cast<doublespike*>(pos.get()) && pos->getshape2().getGlobalBounds().contains(mousepos))) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
                     switch (i) {
                         case 0:
                         tilename = maketext(35, sf::Color(255, 0, 0), "SPIKE", font, sf::Vector2f(640, 370));
