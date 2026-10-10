@@ -1057,7 +1057,7 @@ public:
                         break;
                         case 3:
                         tilename = maketext(35, sf::Color(0, 255, 0), "TRIANGLE", font, sf::Vector2f(640, 370));
-                        tiledesc = maketext(25, sf::Color(0, 255, 0), "The triangle can teleport exactly 2.5 tiles ahead of itself.\nUseful forcrossing barriers and chaining it\nwith other shapes to do combos!", font, sf::Vector2f(640, 450));
+                        tiledesc = maketext(25, sf::Color(0, 255, 0), "The triangle can teleport exactly 2.5 tiles ahead of itself.\nUseful for crossing barriers and chaining it\nwith other shapes to do combos!", font, sf::Vector2f(640, 450));
                         if (unlocked[18] == 0) {
                             tilename = maketext(35, sf::Color(255, 40, 60), "???", font, sf::Vector2f(640, 370));
                             tiledesc = maketext(25, sf::Color(255, 40, 60), "Complete more levels to discover this character!", font, sf::Vector2f(640, 450));
