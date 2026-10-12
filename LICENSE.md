@@ -1,6 +1,7 @@
 ## MIT License
 
 Copyright (c) 2026 Zahran Galib
+
 Copyright (c) 2022 Lukas Dürrenberger
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
