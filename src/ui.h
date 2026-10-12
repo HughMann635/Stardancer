@@ -1041,7 +1041,7 @@ public:
                         break;
                         case 1:
                         tilename = maketext(35, sf::Color(0, 145, 255), "CIRCLE", font, sf::Vector2f(640, 370));
-                        tiledesc = maketext(25, sf::Color(0, 145, 255), "The circle can accelerate rapidly when moving around,\nmaking it good for crossing long gaps and such.\nIts shape also allows it to roll underneath\nobstacles through 1-tile pathways.", font, sf::Vector2f(640, 450));
+                        tiledesc = maketext(25, sf::Color(0, 145, 255), "The circle can accelerate rapidly when moving around, making it\ngood for crossing long gaps and such. Its shape also allows it\nto roll underneath obstacles through 1-tile pathways.", font, sf::Vector2f(640, 450));
                         if (unlocked[6] == 0) {
                             tilename = maketext(35, sf::Color(255, 40, 60), "???", font, sf::Vector2f(640, 370));
                             tiledesc = maketext(25, sf::Color(255, 40, 60), "Complete more levels to discover this character!", font, sf::Vector2f(640, 450));
@@ -1057,7 +1057,7 @@ public:
                         break;
                         case 3:
                         tilename = maketext(35, sf::Color(0, 255, 0), "TRIANGLE", font, sf::Vector2f(640, 370));
-                        tiledesc = maketext(25, sf::Color(0, 255, 0), "The triangle can teleport exactly 2.5 tiles ahead of itself.\nUseful for crossing barriers and chaining it\nwith other shapes to do combos!", font, sf::Vector2f(640, 450));
+                        tiledesc = maketext(25, sf::Color(0, 255, 0), "The triangle can teleport exactly 2.5 tiles ahead of itself.\nUseful for crossing barriers and chaining it with other shapes\nto do combos! Its teleport is very precise, and it sometimes\ndigs into the ground and walls, so you may have to\nadjust your position to get it to work.", font, sf::Vector2f(640, 450));
                         if (unlocked[18] == 0) {
                             tilename = maketext(35, sf::Color(255, 40, 60), "???", font, sf::Vector2f(640, 370));
                             tiledesc = maketext(25, sf::Color(255, 40, 60), "Complete more levels to discover this character!", font, sf::Vector2f(640, 450));
@@ -1065,7 +1065,7 @@ public:
                         break;
                         case 4:
                         tilename = maketext(35, sf::Color(255, 210, 0), "HEXAGON", font, sf::Vector2f(640, 370));
-                        tiledesc = maketext(25, sf::Color(255, 210, 0), "The hexagon can double jump. To maximize its utility,\npractice comboing it with other shapes to gain massive\ndistance!", font, sf::Vector2f(640, 450));
+                        tiledesc = maketext(25, sf::Color(255, 210, 0), "The hexagon can double jump. To maximize its utility, practice\ncomboing it with other shapes to gain massive distance!", font, sf::Vector2f(640, 450));
                         if (unlocked[24] == 0) {
                             tilename = maketext(35, sf::Color(255, 40, 60), "???", font, sf::Vector2f(640, 370));
                             tiledesc = maketext(25, sf::Color(255, 40, 60), "Complete more levels to discover this character!", font, sf::Vector2f(640, 450));
