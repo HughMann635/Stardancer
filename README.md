@@ -5,7 +5,7 @@ A 2D platformer game in which you play as a square in outer space traversing thr
 
 ![Gameplay GIF](b3aubf.gif)
 
-### Watch the 100% walkthrough of the game here (STRONGLY ENCOURAGED): [youtube.com/watch?v=FAyu4aj3WQ4](https://www.youtube.com/watch?v=FAyu4aj3WQ4)
+### Watch the full walkthrough here (STRONGLY ENCOURAGED): [youtube.com/watch?v=FAyu4aj3WQ4](https://www.youtube.com/watch?v=FAyu4aj3WQ4)
 
 ### Play the game here: [zahran-635.itch.io/stardancer](https://zahran-635.itch.io/stardancer)
 
