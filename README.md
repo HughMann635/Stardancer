@@ -84,8 +84,9 @@ build/bin/Release/stardancer.exe
 ```
 
 
-## Credits and Acknowledgements
+## Credits, License, and Acknowledgements
 - AI use: Used AI for minor debugging in physics and collision-related sections, but all artwork, game design, UI, etc. was created by me (as well as most initial physics/collision logic)
 - I heavily relied on the **Simple and Fast Multimedia Library (SFML)** in creating this game.
+- This game is licensed under the MIT license, see ```LICENSE.md``` for more info.
 
 © Zahran Galib 2026
