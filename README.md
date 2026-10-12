@@ -34,8 +34,8 @@ Note: you can change every single one of these controls in game thanks to the ke
 | Switch to Octagon | 3 |
 | Switch to Triangle | 4 |
 | Switch to Hexagon | 5 |
-| Special Key 1 | Left Shift |
-| Special Key 2 | Right Shift |
+| Special Key 1 (used for certain shapes' powers) | Left Shift |
+| Special Key 2 (used for certain shapes' powers) | Right Shift |
   
 ## How does it work?
 This game was made using purely C++ and the Simple and Fast Multimedia Library (SFML), which is a low-level graphics library used for rendering 2D graphics and shapes as well as basic SFX and the like. I did not use any external game engines, such as Godot or Unity, to create this project.
@@ -51,7 +51,7 @@ Another key aspect is the collision system. This game uses Separating Axis Theor
 - deciding when the shape enters a freefall state and doesn't need to keep forcibly tipping.
 
 ## Building from Source (Local Development)
-**Note:** Local builds are currently only tested and supported on **Windows** (Visual Studio).
+**Note:** Local builds are currently only tested and supported on **Windows**.
 
 If you want to compile and run *Stardancer* locally, follow these steps:
 
