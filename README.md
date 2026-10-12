@@ -1,11 +1,13 @@
-# Stardancer - WIP! NOT FINISHED!!!
+# Stardancer
 A 2D platformer game in which you play as a square in outer space traversing through 30 levels, gaining the ability to turn into various shapes along the way, each with their own powers!
 
--> insert a gameplay gif here
+*GIF made at [imgflip.com](imgflip.com).
 
-Watch the 100% walkthrough of the game here: [I'll add the link here eventually]
+![Gameplay GIF](b3aubf.gif)
 
-Play the game here: [I'll add the link here eventually]
+Watch the 100% walkthrough of the game here: [youtube.com/watch?v=FAyu4aj3WQ4](https://www.youtube.com/watch?v=FAyu4aj3WQ4)
+
+Play the game here: [zahran-635.itch.io/stardancer](https://zahran-635.itch.io/stardancer)
 
 ## So what's in the game?
 - 30 distinct, challenging levels featuring puzzles and shortcuts
@@ -32,8 +34,8 @@ Note: you can change every single one of these controls in game thanks to the ke
 | Switch to Octagon | 3 |
 | Switch to Triangle | 4 |
 | Switch to Hexagon | 5 |
-| Special Key 1 | Left Shift |
-| Special Key 2 | Right Shift |
+| Special Key 1 (used for certain shapes' powers) | Left Shift |
+| Special Key 2 (used for certain shapes' powers) | Right Shift |
   
 ## How does it work?
 This game was made using purely C++ and the Simple and Fast Multimedia Library (SFML), which is a low-level graphics library used for rendering 2D graphics and shapes as well as basic SFX and the like. I did not use any external game engines, such as Godot or Unity, to create this project.
@@ -49,7 +51,7 @@ Another key aspect is the collision system. This game uses Separating Axis Theor
 - deciding when the shape enters a freefall state and doesn't need to keep forcibly tipping.
 
 ## Building from Source (Local Development)
-**Note:** Local builds are currently only tested and supported on **Windows** (Visual Studio).
+**Note:** Local builds are currently only tested and supported on **Windows**.
 
 If you want to compile and run *Stardancer* locally, follow these steps:
 
@@ -82,8 +84,9 @@ build/bin/Release/stardancer.exe
 ```
 
 
-## Credits and Acknowledgements
+## Credits, License, and Acknowledgements
 - AI use: Used AI for minor debugging in physics and collision-related sections, but all artwork, game design, UI, etc. was created by me (as well as most initial physics/collision logic)
 - I heavily relied on the **Simple and Fast Multimedia Library (SFML)** in creating this game.
+- This game is licensed under the MIT license, see ```LICENSE.md``` for more info.
 
 © Zahran Galib 2026
