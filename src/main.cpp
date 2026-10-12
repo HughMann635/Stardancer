@@ -68,6 +68,7 @@ int main()
 				map.envtilelist.clear();
 				map.loadmap(levels[setnum][levelnum], levels_env[setnum][levelnum]);
 				currentplayer = std::make_unique<square>();
+				nearestedge = 90.f;
 				currentplayer -> velocity = sf::Vector2f(0, 0);
 				currentplayer -> shape().setPosition(map.spawn);
 				currentplayer -> shape().setRotation(sf::degrees(0));
@@ -101,6 +102,7 @@ int main()
 					tped = false;
 					currentplayer = std::make_unique<square>();
 					currentplayer -> shape().setPosition(map.spawn);
+					nearestedge = 90.f;
 					currentplayer -> velocity = sf::Vector2f(0.f, 0.f);
 					currentplayer -> shape().setRotation(sf::degrees(0));
 					currentplayer -> rotation = 0;
@@ -153,6 +155,7 @@ int main()
 					currentplayer -> shape().setPosition(map.spawn);
 					currentplayer -> velocity = sf::Vector2f(0.f, 0.f);
 					gravity = 1800.f;
+					nearestedge = 90.f;
 					currentplayer -> shape().setRotation(sf::degrees(0));
 					currentplayer -> rotating = false;
 					currentplayer -> freefallingtip = false;
@@ -194,43 +197,43 @@ int main()
 			inblackhole = false;
 			map.checkCollisions(*currentplayer, deltatime);
 			if (!restart && !newlevel) currentplayer -> rotateobject(edge, map, currentplayer -> shape(), deltatime, movespeed, swimming, zerogactive, currentplayer -> grounded, nearestedge);
-			lastframe_pos = sf::Vector2f(currentplayer -> shape().getPosition());
-			lastframe_vel = sf::Vector2f(currentplayer -> velocity);
 	
 			if (keypressed(Action::restart) && !newlevel) { 
 				restart = true;
 				restarted = true;
 			}
-
-			if (keypressed(Action::switch1) && !dynamic_cast<square*>(currentplayer.get()) && !restart) { 
+			
+			lastframe_pos = sf::Vector2f(currentplayer -> shape().getPosition());
+			lastframe_vel = sf::Vector2f(currentplayer -> velocity);
+			if (keypressed(Action::switch1) && !dynamic_cast<square*>(currentplayer.get()) && !restart && !swapped) { 
 				currentplayer = std::make_unique<square>(); 
 				swapped = true; 
 				nearestedge = 90.f; 
 			}
-			else if (keypressed(Action::switch2) && !dynamic_cast<circle*>(currentplayer.get()) && !circlelocked && !restart) { 
+			else if (keypressed(Action::switch2) && !dynamic_cast<circle*>(currentplayer.get()) && !circlelocked && !restart && !swapped) { 
 				currentplayer = std::make_unique<circle>(); 
 				swapped = true; 
 				if (setnum < 1) cheatswitch = true;
 			}
-			else if (keypressed(Action::switch3) && !dynamic_cast<octagon*>(currentplayer.get()) && !octagonlocked && !restart) { 
+			else if (keypressed(Action::switch3) && !dynamic_cast<octagon*>(currentplayer.get()) && !octagonlocked && !restart && !swapped) { 
 				currentplayer = std::make_unique<octagon>(); 
 				swapped = true; 
 				nearestedge = 45.f;
 				if (setnum < 2) cheatswitch = true;
 			}
-			else if (keypressed(Action::switch4) && !dynamic_cast<triangle*>(currentplayer.get()) && !trianglelocked && !restart) { 
+			else if (keypressed(Action::switch4) && !dynamic_cast<triangle*>(currentplayer.get()) && !trianglelocked && !restart && !swapped) { 
 				currentplayer = std::make_unique<triangle>(); 
 				swapped = true; 
 				nearestedge = 120.f; 
 				if (setnum < 3) cheatswitch = true;
 			}
-			else if (keypressed(Action::switch5) && !dynamic_cast<hexagon*>(currentplayer.get()) && !hexagonlocked && !restart) { 
+			else if (keypressed(Action::switch5) && !dynamic_cast<hexagon*>(currentplayer.get()) && !hexagonlocked && !restart && !swapped) { 
 				currentplayer = std::make_unique<hexagon>(); 
 				swapped = true; 
 				nearestedge = 60.f; 
 				if (setnum < 4) cheatswitch = true;
 			}
-			
+
 			if (swapped) {
 				currentplayer -> shape().setPosition(lastframe_pos);
 				currentplayer -> velocity = lastframe_vel;
