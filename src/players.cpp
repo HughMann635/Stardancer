@@ -28,16 +28,25 @@ void entity::rotateobject(sf::Vector2f& edge, tilemap& map, sf::Shape& shape, fl
         initialtip = shape.getRotation().asDegrees();
         edge = sf::Vector2f(std::ceil(center.x / playerdim) * playerdim, shape.getPosition().y + playerdim / 2);
     }
-    int tilt = shape.getRotation().asDegrees() - initialtip;
+    float tilt = shape.getRotation().asDegrees() - initialtip;
     if (tilt > 180) tilt -= 360;
     if (tilt < -180) tilt += 360;
     if (keypressed(Action::left) || keypressed(Action::right) || keypressed(Action::jump)) {
         tipping_left = false;
         tipping_right = false;
     }
+
+    if (!freefallingtip && ((tipping_right && grounded_right && grounded_center) || (tipping_left && grounded_left && grounded_center))) {
+        tipping_left = false;
+        tipping_right = false;
+    }
+
     if ((!freefallingtip && (tipping_right || tipping_left) && (tilt > 45 || tilt < -45))) {
         freefallingtip = true;
     }
+
+    bool settle = (grounded && (std::abs(velocity.x) <= 225.f || !rotating) || inonetile);
+    if (!settle || tipping_right || tipping_left || freefallingtip) settlepoint = -1;
 
     if (freefallingtip) {
         int direction = tipping_right ? 1 : -1;
@@ -60,7 +69,7 @@ void entity::rotateobject(sf::Vector2f& edge, tilemap& map, sf::Shape& shape, fl
         shape.getRotation().asDegrees() > 180 ? shape.rotate(sf::degrees(1)) : shape.rotate(sf::degrees(-1));
         if (std::abs(shape.getRotation().asDegrees()) < 5) shape.setRotation(sf::degrees(0));
     } 
-    else if ((grounded && std::abs(velocity.x) <= 225.f) || inonetile) {
+    else if (settle) {
         rotation = 0.f;
         float nearestangle = 360;
         float currentangle = shape.getRotation().asDegrees();
